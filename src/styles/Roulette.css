@@ -1,0 +1,12 @@
+.roulette{
+    display: grid;
+    grid-template-columns: 20vw 1fr;
+    gap: 15vw;
+    
+.prof{
+grid-column-start: 2;
+
+ min-height: 40vh;
+
+}
+}
