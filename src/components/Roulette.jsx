@@ -4,6 +4,7 @@ import prof from "../assets/prof_birch.png";
 import "../styles/Roulette.css";
 import Result from "./Result";
 import CriPlayer from "./CriPlayer";
+import pokeball_open from "../assets/pokeball.wav";
 import pokeball from "../assets/pixel-art-pokeball.png";
 
 const Roulette = ({ playAudio, cri, imgSrc, setImgSrc, playAnimation }) => {

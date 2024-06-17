@@ -18,6 +18,8 @@ function App() {
   const [playAudio, setPlayAudio] = useState(false);
   const [playAnimation, setPlayAnimation] = useState(0);
   const [dialogLine, setDialogLine] = useState(0);
+  const [userName, setUserName] = useState("");
+  const [pokemonName, setPokemonName] = useState("");
 
   const today = new Date().toLocaleDateString();
 
@@ -31,6 +33,7 @@ function App() {
 
         setImgSrc(data.sprites.front_default);
         setCri(data.cries.latest);
+        setPokemonName(data.name);
         // console.log(data);
       } catch (error) {
         console.error("Error fetching data from json", error);
@@ -54,6 +57,9 @@ function App() {
         playAnimation={playAnimation}
       />
       <Dialog
+        pokemonName={pokemonName}
+        userName={userName}
+        setUserName={setUserName}
         setDialogLine={setDialogLine}
         dialogLine={dialogLine}
         setPlayAudio={setPlayAudio}

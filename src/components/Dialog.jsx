@@ -8,6 +8,9 @@ const Dialog = ({
   setPlayAnimation,
   setDialogLine,
   dialogLine,
+  userName,
+  setUserName,
+  pokemonName,
 }) => {
   const handleClick = (e) => {
     setPlayAudio(true);
@@ -28,6 +31,18 @@ const Dialog = ({
       id: 3,
       text: "Il vous suffira pour celà de rentrer le nom\net le prénom de la personne concernée",
     },
+    {
+      id: 4,
+      text: ``,
+    },
+    {
+      id: 5,
+      text: `Oh wow ! il s'agit de ${pokemonName} !!\nqu'en penses tu ?`,
+    },
+    {
+      id: 6,
+      text: `Oh wow ! il s'agit de ${pokemonName} !!\nqu'en penses tu ${userName}?`,
+    },
   ];
 
   const nextDialog = () => {
@@ -39,21 +54,32 @@ const Dialog = ({
   };
   //   console.log(dialogLine);
 
+  const handleInputChange = (e) => {
+    setUserName(e.target.value);
+    console.log(userName);
+  };
+
   const TextCycle = {};
+
+  const hideInputField = {
+    position: "absolue",
+    top: "9999999rem",
+  };
 
   return (
     <>
-      <div onClick={nextDialog} onKeyDown={nextDialog}>
-        {dialogLine < 4 ? (
+      {dialogLine < 4 ? (
+        <div onClick={nextDialog} onKeyDown={nextDialog}>
           <p className="dialog" style={{ whiteSpace: "pre-wrap" }}>
             {dialogs[dialogLine].text}
             <img src={logo_pixel} alt="" />
           </p>
-        ) : null}
-      </div>
-      {dialogLine === 4 ? (
+        </div>
+      ) : null}
+
+      {dialogLine < 5 ? (
         <div className="name">
-          <input type="text" />
+          <input id="userNameField" type="text" onChange={handleInputChange} />
           <button
             type="button"
             onClick={nextDialog && animationState}
