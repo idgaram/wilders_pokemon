@@ -15,9 +15,9 @@
 
   img {
     width: 1.7rem;
-    position: absolute;
+    /* position: absolute;
     top: 1rem;
-    right: 1.2rem;
+    right: 1.2rem; */
     animation-name: blinking;
     animation-duration: 1s;
     animation-iteration-count: infinite;
@@ -55,7 +55,32 @@
     animation-iteration-count: infinite;
   }
 }
+.dialog-last {
+  overflow: hidden;
+  margin: 0 auto;
+  letter-spacing: 0.05em;
+  animation-name: find-out;
+  animation-duration: 2.3s;
 
+  background-color: #d0d3d0;
+  color: #202020;
+  border-radius: 0.5rem;
+  max-height: 15vh;
+  font-size: 2.5rem;
+  position: relative;
+  width: 50vw;
+  height: 7.5rem;
+
+  img {
+    width: 1.7rem;
+    /* position: absolute;
+    top: 1rem;
+    right: 1.2rem; */
+    animation-name: blinking;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+}
 @keyframes blinking {
   0% {
     opacity: 0%;
@@ -74,5 +99,17 @@
   }
   to {
     width: 100%;
+  }
+}
+
+@keyframes find-out {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

@@ -11,6 +11,7 @@ import Dialog from "./components/Dialog";
 
 function App() {
   const [pokemon, setPokemon] = useState(Math.floor(Math.random() * 1025) + 1);
+  const [pokemonName, setPokemonName] = useState("");
   const [count, setCount] = useState(0);
   const [day, setDay] = useState(new Date().toLocaleDateString());
   const [imgSrc, setImgSrc] = useState(null);
@@ -18,6 +19,7 @@ function App() {
   const [playAudio, setPlayAudio] = useState(false);
   const [playAnimation, setPlayAnimation] = useState(0);
   const [dialogLine, setDialogLine] = useState(0);
+  const [username, setUsername] = useState("");
 
   const today = new Date().toLocaleDateString();
 
@@ -29,6 +31,7 @@ function App() {
         );
         const data = await response.json();
 
+        setPokemonName(data.name);
         setImgSrc(data.sprites.front_default);
         setCri(data.cries.latest);
         // console.log(data);
@@ -38,6 +41,10 @@ function App() {
     };
     fetchPokemon();
   }, [pokemon]);
+
+  const reset = () => {
+    setPokemon(Math.floor(Math.random() * 1025) + 1);
+  };
 
   //   console.log(playAudio);
 
@@ -54,6 +61,9 @@ function App() {
         playAnimation={playAnimation}
       />
       <Dialog
+        pokemonName={pokemonName}
+        username={username}
+        setUsername={setUsername}
         setDialogLine={setDialogLine}
         dialogLine={dialogLine}
         setPlayAudio={setPlayAudio}

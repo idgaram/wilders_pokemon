@@ -18,6 +18,7 @@ const Result = ({ cri, imgSrc, setDialogLine }) => {
   const playBothSounds = () => {
     const audio = document.getElementById("audio");
     const audioPokeball = document.getElementById("pokeball");
+    audio.volume = 0.2;
     audio.play() && audioPokeball.play();
   };
 

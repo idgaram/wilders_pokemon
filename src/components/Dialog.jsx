@@ -4,6 +4,9 @@ import { TypeAnimation } from "react-type-animation";
 import logo_pixel from "../assets/logo_pixel.png";
 
 const Dialog = ({
+  pokemonName,
+  setUsername,
+  username,
   setPlayAudio,
   setPlayAnimation,
   setDialogLine,
@@ -28,32 +31,55 @@ const Dialog = ({
       id: 3,
       text: "Il vous suffira pour celà de rentrer le nom\net le prénom de la personne concernée",
     },
+    {
+      id: 4,
+      text: "vide",
+    },
+    {
+      id: 5,
+      text: `le pokemon te correspondant est ${pokemonName} qu'est ce que tu en dis ${username}? `,
+    },
+    {
+      id: 6,
+      text: "deuxieme",
+    },
   ];
 
   const nextDialog = () => {
     setDialogLine((prevDialogLine) => prevDialogLine + 1);
   };
 
-  const animationState = () => {
-    setPlayAnimation(1);
+  const handleUsername = () => {
+    const usernameInputField = document.querySelector("#usernameInput");
+    setUsername(usernameInputField.value);
   };
-  //   console.log(dialogLine);
+
+  const animationState = () => {
+    handleUsername();
+    setPlayAnimation(1);
+
+    nextDialog();
+  };
+  console.log(username);
 
   const TextCycle = {};
 
   return (
     <>
-      <div onClick={nextDialog} onKeyDown={nextDialog}>
-        {dialogLine < 4 ? (
+      {dialogLine < 4 ? (
+        <div onClick={nextDialog} onKeyDown={nextDialog}>
           <p className="dialog" style={{ whiteSpace: "pre-wrap" }}>
             {dialogs[dialogLine].text}
-            <img src={logo_pixel} alt="" />
+            <span>
+              <img src={logo_pixel} alt="" />
+            </span>
           </p>
-        ) : null}
-      </div>
+        </div>
+      ) : null}
+
       {dialogLine === 4 ? (
         <div className="name">
-          <input type="text" />
+          <input id="usernameInput" type="text" />
           <button
             type="button"
             onClick={nextDialog && animationState}
@@ -62,6 +88,16 @@ const Dialog = ({
             analyser !
           </button>
           <img src={logo_pixel} alt="" />
+        </div>
+      ) : null}
+      {dialogLine > 4 ? (
+        <div onClick={nextDialog} onKeyDown={nextDialog}>
+          <p className="dialog-last" style={{ whiteSpace: "pre-wrap" }}>
+            {dialogs[dialogLine].text}
+            <span>
+              <img src={logo_pixel} alt="" />
+            </span>
+          </p>
         </div>
       ) : null}
     </>
