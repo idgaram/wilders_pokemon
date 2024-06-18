@@ -10,7 +10,7 @@ import Header from "./components/Header";
 import Dialog from "./components/Dialog";
 
 function App() {
-  const [pokemon, setPokemon] = useState(Math.floor(Math.random() * 1025) + 1);
+  const [pokemon, setPokemon] = useState(54);
   const [pokemonName, setPokemonName] = useState("");
   const [count, setCount] = useState(0);
   const [day, setDay] = useState(new Date().toLocaleDateString());
