@@ -26,7 +26,7 @@ const Result = ({ cri, imgSrc, setDialogLine }) => {
     const timer = setTimeout(playBothSounds, 1800);
 
     return () => clearTimeout(timer);
-  });
+  }, []);
 
   return (
     <div>
